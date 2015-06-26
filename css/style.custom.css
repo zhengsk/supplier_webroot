@@ -1,0 +1,581 @@
+/*
+ * 
+ *  ---------------------------------------
+ *  ---------- TABLE OF CONTENTS ----------
+ *  ---------------------------------------
+ *  
+ *  1.  FILE IMPORTS
+ *  2.  RESET STYLES
+ *  3.  HEADER PANEL
+ *          3.1     HEADER LEFT
+ *          3.2     HEADER RIGHT
+ *  4.  LEFT PANEL
+ *          4.1     NAVIGATION STYLES
+ *          4.2     INFO SUMMARY
+ *  5.  MAIN PANEL
+ *          5.1     DASHBOARD
+ *  6.  FORM STYLES
+ *          6.1     FORM WIZARD STYLES
+ *  7.  UI ELEMENTS
+ *  8.  EMAIL
+ *  9.  TABLES
+ *  10. PAGES
+ *          10.1    CALENDAR
+ *          
+ *  11. LEFT PANEL COLLAPSED
+ *  12. RIGHT PANEL STYLES
+ *  13. HORIZONTAL MENU
+ *  14. FIXED WIDTH
+ *  15. MODALS
+ *  16. BUG TRACKER
+ *  17. ADDITIONAL STYLES
+ *          17.1    DROPDOWN
+ *          17.2    ICON
+ *          17.3    TIME PICKER
+ *          17.4    COLOR PICKER
+ *          17.5    STICKY HEADER
+ *          17.6    CUSTOM STYLES
+ *  18. MEDIA QUERIES
+ *  
+ */
+
+
+
+
+
+/********** 1. FILE IMPORTS **********/
+/*************************************/
+
+@import url('bootstrap.min.css');
+@import url('bootstrap-override.css');
+@import url('jquery-ui-1.10.3.css');
+@import url('font-awesome.min.css');
+@import url('animate.min.css');
+@import url('animate.delay.css');
+
+
+/********** 2. RESET STYLES **********/
+/*************************************/
+
+body {
+    font-size: 12px;
+    line-height: 21px;
+    color: #636e7b;
+    background: #FFF;
+     font-family: "Helvetica Neue", "Hiragino Sans GB", "Segoe UI", "Microsoft Yahei", "微软雅黑", Tahoma, Arial, STHeiti, sans-serif;
+     _font-family: Tahoma, Arial, Helvetica, STHeiti, sans-serif;
+}
+
+input,select,textarea {
+    color: #636e7b;
+}
+
+a:focus, a:active { outline: none; }
+
+strong {
+    font-weight: normal;
+}
+
+/* preloader */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #e4e7ea; 
+    z-index: 10000; 
+}
+
+#status {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 50%; 
+    top: 50%;
+    margin: -15px 0 0 -15px;
+    font-size: 32px;
+}
+
+
+
+/********** 3. HEADER PANEL **********/
+/*************************************/
+
+
+.headerbar {
+    border-left: 1px solid #eee;
+    background: #fff;
+}
+
+.headerbar::after {
+    clear: both;
+    display: block;
+    content: '';
+}
+
+
+/***** 3.1 HEADER LEFT *****/
+
+.menutoggle {
+    float: left;
+    width: 50px;
+    height: 50px;
+    font-size: 22px;
+    cursor: pointer;
+    float: left;
+    color: #1d2939;
+    border-right: 1px solid #eee;
+    -moz-transition: all 0.2s ease-out 0s;
+    -webkit-transition: all 0.2s ease-out 0s;
+    transition: all 0.2s ease-out 0s;
+}
+
+.menutoggle:hover {
+    color: #1d2939;
+    background-color: #f7f7f7;
+}
+
+.menutoggle .fa,
+.menutoggle .glyphicon {
+    margin: 14px 0 0 15px;
+}
+
+
+
+/***** 3.2 HEADER RIGHT *****/
+
+
+
+
+/********** 5. MAIN PANEL **********/
+/***********************************/
+
+.mainpanel {
+
+}
+
+
+form .form-group:last-child {
+    margin-bottom: 0;
+}
+
+.row-pad-5 {
+    margin-left: -5px;
+    margin-right: -5px;
+}
+
+.row-pad-5 [class*="col-lg"],
+.row-pad-5 [class*="col-md"],
+.row-pad-5 [class*="col-sm"] {
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 13px;
+    text-transform: uppercase;
+    color: #333;
+    margin-bottom: 15px;
+    margin-top: 0;
+}
+
+.subtitle-lined {
+    border-bottom: 1px dotted #ddd;
+    padding-bottom: 5px;
+}
+
+p {
+    margin-bottom: 10px;
+}
+
+
+
+/********** 6. FORM STYLES **********/
+/************************************/
+
+
+.ckbox,
+.rdio {
+    position: relative;
+}
+
+.ckbox input[type="checkbox"],
+.rdio input[type="radio"] {
+    opacity: 0;
+}
+
+.ckbox label,
+.rdio label {
+    padding-left: 10px;
+    cursor: pointer;
+    margin-bottom: 7px !important;
+}
+
+.ckbox label:before {
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    top: 1px;
+    left: 0;
+    content: '';
+    display: inline-block;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    border: 1px solid #bbb;
+    background: #fff;
+}
+
+.ckbox input[type="checkbox"]:disabled + label  {
+    color: #999;
+}
+
+.ckbox input[type="checkbox"]:disabled + label:before  {
+    background-color: #eee;
+}
+
+.ckbox input[type="checkbox"]:checked + label::after  {
+    font-family: 'FontAwesome';
+    content: "\F00C";
+    position: absolute;
+    top: 0;
+    left: 3.5px;
+    display: inline-block;
+    font-size: 11px;
+    width: 16px;
+    height: 16px;
+    color: #fff;
+}
+
+.ckbox-default input[type="checkbox"]:checked + label:before {
+    border-color: #999;
+}
+
+.ckbox-default input[type="checkbox"]:checked + label::after {
+    color: #333;
+}
+
+.ckbox-primary input[type="checkbox"]:checked + label:before {
+    border-color: #357EBD;
+    background-color: #428BCA;
+}
+
+.ckbox-warning input[type="checkbox"]:checked + label:before {
+    border-color: #EEA236;
+    background-color: #F0AD4E;
+}
+
+.ckbox-success input[type="checkbox"]:checked + label:before {
+    border-color: #1CAF9A;
+    background-color: #1CAF9A;
+}
+
+.ckbox-danger input[type="checkbox"]:checked + label:before {
+    border-color: #D43F3A;
+    background-color: #D9534F;
+}
+
+.rdio label:before {
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    top: 1px;
+    left: 0;
+    content: '';
+    display: inline-block;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+    border: 1px solid #bbb;
+    background: #fff;
+}
+
+.rdio input[type="radio"]:disabled + label  {
+    color: #999;
+}
+
+.rdio input[type="radio"]:disabled + label:before  {
+    background-color: #eee;
+}
+
+.rdio input[type="radio"]:checked + label::after  {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 4px;
+    display: inline-block;
+    font-size: 11px;
+    width: 10px;
+    height: 10px;
+    background-color: #444;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+}
+
+.rdio-default input[type="radio"]:checked + label:before {
+    border-color: #999;
+}
+
+.rdio-primary input[type="radio"]:checked + label:before {
+    border-color: #428BCA;
+}
+
+.rdio-primary input[type="radio"]:checked + label::after {
+    background-color: #428BCA;
+}
+
+.rdio-warning input[type="radio"]:checked + label:before {
+    border-color: #F0AD4E;
+}
+
+.rdio-warning input[type="radio"]:checked + label::after {
+    background-color: #F0AD4E;
+}
+
+.rdio-success input[type="radio"]:checked + label:before {
+    border-color: #1CAF9A;
+}
+
+.rdio-success input[type="radio"]:checked + label::after {
+    background-color: #1CAF9A;
+}
+
+.rdio-danger input[type="radio"]:checked + label:before {
+    border-color: #D9534F;
+}
+
+.rdio-danger input[type="radio"]:checked + label::after {
+    background-color: #D9534F;
+}
+
+
+pre {
+    font-size: 12px;
+    color: #C7254E;
+    border: 1px solid #ddd;
+    padding: 8px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    background: #fff;
+}
+
+label.error {
+    color: #B94A48;
+    margin-top: 2px;
+}
+
+label.error:empty {
+    display: none !important;    
+}
+
+
+.asterisk {
+    color: #D9534F;
+}
+
+div.error {
+    margin-bottom: 20px;
+    display: none;
+    position: relative;
+}
+
+div.error label.error {
+    display: block;
+    padding-left: 25px;
+    position: relative;
+}
+
+div.error label.error:before {
+    font-family: 'Glyphicons Halflings';
+    content: '\e101';
+    position: absolute;
+    top: -2px;
+    left: 0;
+    font-size: 16px;
+    color: #D9534F;
+    display: inline-block;
+}
+
+.bootstrap-timepicker .dropdown-menu {
+    top: 40px;
+}
+
+
+
+/********** 10. PAGES **********/
+/*******************************/
+
+
+/***** 10.1 CALENDAR *****/
+
+
+
+
+/********** 13. HORIZONTAL MENU **********/
+/*****************************************/
+
+
+
+/********** 14. FIXED WIDTH **********/
+/*************************************/
+
+
+/********** 15. MODALS **********/
+/********************************/
+
+
+
+/********** 17. ADDITIONAL STYLES **********/
+/*******************************************/
+
+
+
+/***** 17.5 STICKY HEADER */
+
+
+.stickyheader .headerbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    box-shadow: 0 1px rgba(0,0,0,0.05);
+}
+
+.stickyheader .mainpanel {
+    padding-top: 50px;
+}
+
+
+/***** 17.6 CUSTOM STYLES *****/
+
+.mb5 {
+    margin-bottom: 5px;
+}
+
+.mb10 {
+    margin-bottom: 10px;
+}
+
+.mb15 {
+    margin-bottom: 15px;
+}
+
+.mb20 {
+    margin-bottom: 20px;
+}
+
+.mb30 {
+    margin-bottom: 30px;
+}
+
+.mb40 {
+    margin-bottom: 40px;
+}
+
+.mr5 {
+    margin-right: 5px;
+}
+
+.mr10 {
+    margin-right: 10px;
+}
+
+.mr20 {
+    margin-right: 20px;
+}
+
+.mr30 {
+    margin-right: 30px;
+}
+
+.mt5 {
+    margin-top: 5px;
+}
+
+.mt10 {
+    margin-top: 10px;
+}
+
+.nomargin {
+    margin: 0;
+}
+
+.noshadow {
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.border-right-0 {
+    border-right: 0;
+}
+
+.border-left-0 {
+    border-left: 0;
+}
+
+.nopadding {
+    padding: 0 !important;
+}
+
+.padding-top-0 {
+    padding-top: 0;
+}
+
+.padding5 {
+    padding: 5px;
+}
+
+.padding10 {
+    padding: 10px;
+}
+
+.serif {
+    font-family: 'Georgia, serif';
+}
+
+.italic {
+    font-style: italic;
+}
+
+.dark {
+    color: #333;
+}
+
+.width100p {
+    width: 100%;
+}
+
+.width20 {
+    width: 20px;
+}
+
+.width30 {
+    width: 30px;
+}
+
+.inblock {
+    display: inline-block;
+}
+
+
+
+/********** 18. MEDIA QUERIES **********/
+/***************************************/
+
+
+
+
+
+
+
+
+
+
+/********** 18. addSupplier_selectSupplierType 选择供方类别 **********/
+/*********************************************************************/
