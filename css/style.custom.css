@@ -58,11 +58,11 @@
 /*************************************/
 
 body {
-    font-size: 12px;
+    font-size: 14px;
     line-height: 21px;
     color: #636e7b;
-    background: #FFF;
-     font-family: "Helvetica Neue", "Hiragino Sans GB", "Segoe UI", "Microsoft Yahei", "å¾®è½¯é›…é»‘", Tahoma, Arial, STHeiti, sans-serif;
+    background: #e4e7ea;
+     font-family: "Helvetica Neue", "Hiragino Sans GB", "Segoe UI", "Microsoft Yahei", "Î¢ÈíÑÅºÚ", Tahoma, Arial, STHeiti, sans-serif;
      _font-family: Tahoma, Arial, Helvetica, STHeiti, sans-serif;
 }
 
@@ -501,6 +501,14 @@ div.error label.error:before {
     margin-top: 10px;
 }
 
+.mt20 {
+    margin-top: 20px;
+}
+
+.mt30 {
+    margin-top: 30px;
+}
+
 .nomargin {
     margin: 0;
 }
@@ -563,6 +571,9 @@ div.error label.error:before {
     display: inline-block;
 }
 
+.strong {
+    font-weight: bolder;
+}
 
 
 /********** 18. MEDIA QUERIES **********/
@@ -577,5 +588,97 @@ div.error label.error:before {
 
 
 
-/********** 18. addSupplier_selectSupplierType é€‰æ‹©ä¾›æ–¹ç±»åˆ« **********/
+/********** 18. addSupplier_selectSupplierType Ñ¡Ôñ¹©·½Àà±ð **********/
 /*********************************************************************/
+
+.select-supplier-accordion-title,
+.collapsed.select-supplier-accordion-title,
+.collapsed.select-supplier-accordion-title:hover,
+.collapsed.select-supplier-accordion-title:focus{
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
+    padding:10px 10px;
+    color: #333;
+    background: #FFF url(../images/plus.png) 92% center no-repeat;
+    border-bottom: 2px solid #AAA;
+}
+
+.collapsed.select-supplier-accordion-title:hover,
+.collapsed.select-supplier-accordion-title:focus{
+    background-color: #EEE;
+}
+
+.select-supplier-accordion .panel:last-child .collapsed.select-supplier-accordion-title{
+    border-bottom: none;
+}
+
+.select-supplier-accordion-title,
+.select-supplier-accordion-title:hover,
+.select-supplier-accordion-title:focus{
+    color: #333;
+    background-image: url(../images/minus.png);
+    background-color: #EEE;
+    text-decoration: none;
+}
+
+.select-supplier-accordion .list-group-item:last-child{
+    border-bottom: 1px solid #DDD!important;
+}
+
+.select-supplier-accordion .list-group-item{
+    cursor: pointer;
+}
+
+.select-supplier-accordion .list-group-item:hover{
+    background-color: #F4F4F4;
+}
+
+div.tagsinput span.tag {
+   display: block;
+   float: left;
+   padding: 3px 7px;
+   text-decoration:none;
+   background: #1caf9a;
+   color: #fff;
+   margin-right: 5px;
+   margin-bottom:5px;
+   font-size:13px;
+   -moz-border-radius: 2px;
+   -webkit-border-radius: 2px;
+   border-radius: 2px;
+}
+
+div.tagsinput span.tag a {
+   font-weight: bold;
+   color: #fff;
+   opacity: 0.7;
+   text-decoration: none;
+   font-size: 11px;
+   padding: 3px;
+   position: relative;
+   top: -1px;
+}
+
+div.tagsinput span.tag a:hover {
+   opacity: 1;
+}
+
+.supplier-type-tags .label{
+    display: inline-block;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    color: #428BCA;
+    cursor: pointer;
+}
+
+.supplier-type-tags .label:hover{
+    background-color: #EEE;
+}
+
+.supplier-type-tags .label.label-checked,
+.supplier-type-tags .label.label-checked:hover{
+    color: #FFF;
+    background-color: #1caf9a;
+}
+
