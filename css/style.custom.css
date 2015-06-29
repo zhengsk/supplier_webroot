@@ -1,4 +1,4 @@
-/*
+﻿/*
  * 
  *  ---------------------------------------
  *  ---------- TABLE OF CONTENTS ----------
@@ -62,7 +62,7 @@ body {
     line-height: 21px;
     color: #636e7b;
     background: #e4e7ea;
-     font-family: "Helvetica Neue", "Hiragino Sans GB", "Segoe UI", "Microsoft Yahei", "΢���ź�", Tahoma, Arial, STHeiti, sans-serif;
+     font-family: "Helvetica Neue", "Hiragino Sans GB", "Segoe UI", "Microsoft Yahei", "Î¢ÈíÑÅºÚ", Tahoma, Arial, STHeiti, sans-serif;
      _font-family: Tahoma, Arial, Helvetica, STHeiti, sans-serif;
 }
 
@@ -588,7 +588,7 @@ div.error label.error:before {
 
 
 
-/********** 18. addSupplier_selectSupplierType ѡ�񹩷���� **********/
+/********** 18. addSupplier_selectSupplierType Ñ¡Ôñ¹©·½Àà±ð **********/
 /*********************************************************************/
 
 .select-supplier-accordion-title,
@@ -631,6 +631,13 @@ div.error label.error:before {
 }
 
 .select-supplier-accordion .list-group-item:hover{
+    background-color: #F4F4F4;
+}
+
+.current-select-type{
+    font-weight: bolder;
+    color: #1caf9a;
+    border-right: 2px solid #1caf9a!important;
     background-color: #F4F4F4;
 }
 

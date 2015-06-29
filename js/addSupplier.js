@@ -30,7 +30,7 @@ jQuery(document).ready(function() {
 			
 				listUl = $('<ul id="supplierTypeList_'+ i +'" class="panel-collapse collapse list-group" style="height: 0px;"></ul>');
 				for (var m = 0, n = item.children.length; m < n; m++) {
-					$('<li class="list-group-item">'+ item.children[m].text +'</li>').data('typeDatas', item.children[m]).appendTo(listUl);
+					$('<li class="list-group-item">&emsp;'+ item.children[m].text +'</li>').data('typeDatas', item.children[m]).appendTo(listUl);
 				};
 
 				panelHeading.append(panelHeadingContent);
@@ -39,16 +39,26 @@ jQuery(document).ready(function() {
 
 				$('#accordionSupplierType').append(panel);
 			};
+
 			// 绑定点击事件
 			$('#accordionSupplierType').on('click', 'li', function(event){
 				self.setDetailType($(this).data('typeDatas'));
+
+				// 选中当前分类
+				if(self.currentSelectType){ 
+					$(self.currentSelectType).removeClass('current-select-type');
+				}
+				self.currentSelectType = this;
+				$(self.currentSelectType).addClass('current-select-type')
 			});
 		};
 
 		// 设置类别子项（右侧）
 		this.setDetailType = function (datas) {
-			console.info(datas);
-			$('#supplierTypeLabelWrapper').empty(); //先清空内容
+			$('#supplierTypeLabelTitle').html(datas.text); // 标题
+
+			var supplierTypeLabelWrapper = $('#supplierTypeLabelWrapper');
+			supplierTypeLabelWrapper.empty().hide(); // 先清空内容
 
 			if(datas.children){ // 存在子节点
 				var childNodes = datas.children;
@@ -68,6 +78,8 @@ jQuery(document).ready(function() {
 				createItem([datas]);
 			}
 
+			supplierTypeLabelWrapper.fadeIn(400); //先清空内容
+
 			// 创建类型元素
 			function createItem(itemData, subtitle){
 				if(subtitle){
@@ -79,9 +91,9 @@ jQuery(document).ready(function() {
 					$('<span class="label">'+ itemData[m].text +'</span>')
 						.data('typeDatas', itemData[m]).appendTo(labels);
 				}
-				$('<div class="mb20"></div>').append(subtitle).append(labels).appendTo('#supplierTypeLabelWrapper');
+				var result = $('<div class="mb20"></div>').append(subtitle).append(labels);
+				supplierTypeLabelWrapper.append(result);
 			}
-
 
 			/*====
 				<div class="mb20">
