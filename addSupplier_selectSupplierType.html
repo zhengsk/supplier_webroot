@@ -39,33 +39,7 @@
                                     <h3 class="panel-title"><span class="glyphicon glyphicon-th-large"></span> 选择分类</h3>
                                 </div>
                                     
-                                <div class="panel-group select-supplier-accordion" id="accordion">
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="collapsed select-supplier-accordion-title"> <span class="glyphicon glyphicon-stats"></span> 工程施工类 </a>
-                                        </div>
-                                        <ul id="collapseOne" class="panel-collapse collapse list-group" style="height: 0px;">
-                                          <li class="list-group-item">工程施工类</li>
-                                          <li class="list-group-item">土建品牌类</li>
-                                          <li class="list-group-item">安装品牌类</li>
-                                          <li class="list-group-item">批量精装品牌类</li>
-                                          <li class="list-group-item">土建品牌代理商</li>
-                                          <li class="list-group-item">安装品牌代理商</li>
-                                          <li class="list-group-item">批量品牌代理商</li>
-                                          <li class="list-group-item">工程类专业咨询</li>
-                                        </ul>
-                                    </div>
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <a data-toggle="collapse"  class="collapsed select-supplier-accordion-title" data-parent="#accordion" href="#collapseTwo"> <span class="glyphicon glyphicon-stats"></span> 设计类</a>
-                                        </div>
-                                        <div id="collapseTwo" class="panel-collapse collapse" style="height: 0px;">
-                                            <div class="panel-body">
-                                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt a
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <div class="panel-group select-supplier-accordion" id="accordionSupplierType"></div>
 
                             </div>
                         </div>
@@ -91,7 +65,7 @@
                                 <div class="panel-heading">
                                     <h3 class="panel-title">工程施工类</h3>
                                 </div>
-                                <div class="panel-body supplier-type-tags">
+                                <div class="panel-body supplier-type-tags" id="supplierTypeLabelWrapper">
                                     <div class="mb20">
                                         <h5 class="subtitle strong">土建工程施工总承包</h5>
                                         <p>
@@ -100,63 +74,6 @@
                                             <span class="label">装配式住宅</span>
                                         </p>
                                     </div>
-                                    <div class="mb20">
-                                        <h5 class="subtitle strong">批量精装工程施工总承包</h5>
-                                        <p>
-                                            <span class="label">住宅</span>
-                                            <span class="label">公建</span>
-                                        </p>
-                                    </div>
-                                    <div class="mb20">
-                                        <h5 class="subtitle strong">土建专业分包</h5>
-                                        <p>
-                                            <span class="label">基础</span>
-                                            <span class="label">土石方</span>
-                                            <span class="label">边坡支护</span>
-                                            <span class="label label-checked">外墙装饰</span>
-                                            <span class="label">室内装饰</span>
-                                            <span class="label">钢构</span>
-                                            <span class="label">幕墙</span>
-                                            <span class="label">铝合金门窗、塑钢门窗</span>
-                                            <span class="label">人防</span>
-                                            <span class="label">室内装饰</span>
-                                            <span class="label">钢构</span>
-                                            <span class="label">幕墙</span>
-                                            <span class="label">铝合金门窗、塑钢门窗</span>
-                                            <span class="label">人防</span>
-                                        </p>
-                                    </div>
-                                    <div class="mb20">
-                                        <h5 class="subtitle strong">安装专业分包</h5>
-                                        <p>
-                                            <span class="label">基础</span>
-                                            <span class="label">土石方</span>
-                                            <span class="label">边坡支护</span>
-                                            <span class="label">外墙装饰</span>
-                                            <span class="label">室内装饰</span>
-                                            <span class="label">钢构</span>
-                                            <span class="label">幕墙</span>
-                                            <span class="label">铝合金门窗、塑钢门窗</span>
-                                            <span class="label">人防</span>
-                                            <span class="label">室内装饰</span>
-                                            <span class="label">钢构</span>
-                                            <span class="label">幕墙</span>
-                                            <span class="label">铝合金门窗、塑钢门窗</span>
-                                            <span class="label">人防</span>
-                                        </p>
-                                    </div>
-                                    <div class="mb20">
-                                        <h5 class="subtitle strong">环境工程专业分包</h5>
-                                        <p>
-                                            <span class="label">基础</span>
-                                            <span class="label">土石方</span>
-                                            <span class="label">边坡支护</span>
-                                            <span class="label">外墙装饰</span>
-                                            <span class="label">室内装饰</span>
-                                            <span class="label">钢构</span>
-                                        </p>
-                                    </div>
-                                    
                                 </div>
                             </div>
 
@@ -199,6 +116,7 @@
         <script src="js/bootstrap.min.js"></script>
         <script src="js/modernizr.min.js"></script>
         <script src="js/jquery.cookies.js"></script>
+        <script src="js/artTemplate/template-debug.js"></script>
 
         <script src="js/custom.js"></script>
         <script src="js/addSupplier.js"></script>
