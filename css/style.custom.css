@@ -575,6 +575,9 @@ div.error label.error:before {
     font-weight: bolder;
 }
 
+.pos-r{
+    position: relative;
+}
 
 /********** 18. MEDIA QUERIES **********/
 /***************************************/
@@ -641,6 +644,10 @@ div.error label.error:before {
     background-color: #F4F4F4;
 }
 
+div.tagsinput{
+    min-height: 33px;
+}
+
 div.tagsinput span.tag {
    display: block;
    float: left;
@@ -654,6 +661,10 @@ div.tagsinput span.tag {
    -moz-border-radius: 2px;
    -webkit-border-radius: 2px;
    border-radius: 2px;
+}
+
+div.tagsinput span.tag:hover {
+    background-color: #189180;
 }
 
 div.tagsinput span.tag a {
@@ -689,3 +700,16 @@ div.tagsinput span.tag a:hover {
     background-color: #1caf9a;
 }
 
+.fixed-button-row{
+    height: 60px;
+}
+
+.fixed-button-wrapper{
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    background-color: #fff;
+    padding:10px 0 0;
+    border-top:1px solid #999;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5)
+}
