@@ -103,15 +103,15 @@ jQuery(document).ready(function() {
 			return result;
 
 			/*====
-			<div class="mb20">
-			    <h5 class="subtitle strong">土建工程施工总承包</h5>
-			    <p>
-			        <span class="label">住宅</span>
-			        <span class="label">公建</span>
-			        <span class="label">装配式住宅</span>
-			    </p>
-			</div>
-		====*/
+				<div class="mb20">
+				    <h5 class="subtitle strong">土建工程施工总承包</h5>
+				    <p>
+				        <span class="label">住宅</span>
+				        <span class="label">公建</span>
+				        <span class="label">装配式住宅</span>
+				    </p>
+				</div>
+			====*/
 		}
 
 		// 添加选中类别
@@ -209,6 +209,20 @@ jQuery(document).ready(function() {
 		supplierTypeDataUrl : "_temp/supplierTypeData.json"
 	});
 
+	// 获取数据
+	function getSupplierTypeData(){
+		var selectedTypes = SupplierTypeSelect.selectedTypes;
+		var supplierProperty = $('#supplierProperty').find('input[name=supplierProperty]:checked');
+		return {
+			selectedTypes : selectedTypes
+			,supplierProperty : supplierProperty
+		}
+	}
+
+	$('#selectSupplierNext').click(function(){
+		var datas = getSupplierTypeData();
+		debugger;
+	});
 
 });
 

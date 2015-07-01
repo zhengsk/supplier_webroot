@@ -71,17 +71,17 @@
                                 <div class="panel-heading">
                                     <h3 class="panel-title"><span class="glyphicon glyphicon-user"></span> 供方性质</h3>
                                 </div>
-                                <div class="panel-body form-inline">
+                                <div class="panel-body form-inline" id="supplierProperty">
                                     <div class="rdio rdio-primary form-group">
-                                        <input type="radio" name="radio" value="1" id="radioPrimary_01">
+                                        <input type="radio" name="supplierProperty" value="1" id="radioPrimary_01">
                                         <label for="radioPrimary_01">独立法人</label>
                                     </div>
                                     <div class="rdio rdio-primary form-group">
-                                        <input type="radio" name="radio" value="2" id="radioPrimary_02">
+                                        <input type="radio" name="supplierProperty" value="2" id="radioPrimary_02">
                                         <label for="radioPrimary_02">分院（无资质）</label>
                                     </div>
                                     <div class="rdio rdio-primary form-group">
-                                        <input type="radio" name="radio" value="3" id="radioPrimary_03">
+                                        <input type="radio" name="supplierProperty" value="3" id="radioPrimary_03">
                                         <label for="radioPrimary_03">自然人</label>
                                     </div>
                                 </div>
@@ -93,8 +93,8 @@
                         <div class="col-md-12 fixed-button-row">
                             <div data-spy="affix" class="fixed-button-wrapper">
                                 <p class="text-right container">
-                                    <button class="btn btn-white mr5">取消</button>
-                                    <button class="btn btn-primary">下一步 <span class="glyphicon glyphicon-chevron-right"></span></button>
+                                    <button class="btn btn-white mr5" id="selectSupplierCancel">取消</button>
+                                    <button class="btn btn-primary" id="selectSupplierNext">下一步 <span class="glyphicon glyphicon-chevron-right"></span></button>
                                 </p>
                             </div>
                         </div>

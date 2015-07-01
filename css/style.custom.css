@@ -594,6 +594,10 @@ div.error label.error:before {
 /********** 18. addSupplier_selectSupplierType 选择供方类别 **********/
 /*********************************************************************/
 
+.addSupplier-title .panel-heading{
+    border-bottom: 4px solid #FFF;
+}
+
 .select-supplier-accordion-title,
 .collapsed.select-supplier-accordion-title,
 .collapsed.select-supplier-accordion-title:hover,
