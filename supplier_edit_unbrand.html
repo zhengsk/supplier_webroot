@@ -7,7 +7,7 @@
         <meta name="author" content="">
         <link rel="shortcut icon" href="images/favicon.png" type="image/png">
 
-        <title>选择供方类别</title>
+        <title>供方详细信息（除品牌类）</title>
 
         <link href="css/style.custom.css" rel="stylesheet">
 
@@ -34,39 +34,190 @@
                     
                     <div class="panel panel-primary mt20 addSupplier-title">
                         <div class="panel-heading">
-                            <h1 class="text-center mt5 mb5">选择供方类别</h1>
+                            <h1 class="text-center mt5 mb5">供方详细信息（除品牌类）</h1>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-md-3">
-                            <div class="panel panel-primary">
+                            <div class="panel panel-primary supplier-info-nav" data-spy="affix" data-offset-top="128">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title"><span class="glyphicon glyphicon-th-large"></span> 选择分类</h3>
+                                    <h3 class="panel-title"><span class="glyphicon glyphicon-th-large"></span> 导航</h3>
                                 </div>
                                     
-                                <div class="panel-group select-supplier-accordion" id="accordionSupplierType"></div>
+                                    <ul id="supplierTypeList_0" class="panel-collapse list-group collapse in">
+                                        <li class="list-group-item current-select-type">&emsp;基础资料</li>
+                                        <li class="list-group-item">&emsp;供方等级</li>
+                                        <li class="list-group-item">&emsp;代理品牌</li>
+                                        <li class="list-group-item">&emsp;联系方式</li>
+                                        <li class="list-group-item">&emsp;获奖情况</li>
+                                        <li class="list-group-item">&emsp;与其他公司合作信息</li>
+                                    </ul>
 
                             </div>
                         </div>
                         <div class="col-md-9">
                             <div class="panel panel-primary">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title"><span class="glyphicon glyphicon-saved"></span> 已选择</h3>
+                                    <h3 class="panel-title"><span class="glyphicon glyphicon-saved"></span> 基础资料</h3>
                                 </div>
-                                <div class="panel-body" style="display: block;">
-                                    <div id="tags_tagsinput" class="tagsinput">
-                                        没有选中的类别！
+                                <div class="panel-body">
+                                    <div class="row form-horizontal">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label">
+                                                    企业名称<span class="asterisk"> * </span>：
+                                                </label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" name="name" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label">
+                                                    税务识别号 </span>：
+                                                </label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" name="name" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label">
+                                                    法人代表<span class="asterisk"> * </span>：
+                                                </label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" name="name" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label">
+                                                    公司成立时间<span class="asterisk"> * </span>：
+                                                </label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" name="name" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label">
+                                                    注册资金<span class="asterisk"> * </span>：
+                                                </label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" name="name" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label">
+                                                    公司电话<span class="asterisk"> * </span>：
+                                                </label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" name="name" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label">
+                                                    Email<span class="asterisk"> * </span>：
+                                                </label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" name="name" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label">
+                                                    传真<span class="asterisk"> * </span>：
+                                                </label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" name="name" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label">
+                                                    地址<span class="asterisk"> * </span>：
+                                                </label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" name="name" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label">
+                                                    网址 ：
+                                                </label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" name="name" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label">
+                                                    入库单位<span class="asterisk"> * </span>：
+                                                </label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" name="name" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title" id="supplierTypeLabelTitle"></h3>
-                                </div>
-                                <div class="panel-body supplier-type-tags" id="supplierTypeLabelWrapper"></div>
-                            </div>
 
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title"><span class="glyphicon glyphicon-saved"></span> 供方等级</h3>
+                                </div>
+                                <div class="panel-body">
+                                    
+                                </div>
+                            </div>
+                            
+                            <h1>asdf</h1>
+                            <h1>asdf</h1>
+                            <h1>asdf</h1>
+                            <h1>asdf</h1>
+                            <h1>asdf</h1>
+                            <h1>asdf</h1>
+                            <h1>asdf</h1>
+                            <h1>asdf</h1>
+                            <h1>asdf</h1>
+                            <h1>asdf</h1>
+                            <h1>asdf</h1>
+                            <h1>asdf</h1>
+                            <h1>asdf</h1>
+                            <h1>asdf</h1>
+                            <h1>asdf</h1>
+                            <h1>asdf</h1>
+                            <h1>asdf</h1>
+                            <h1>asdf</h1>
+                            <h1>asdf</h1>
+                            <h1>asdf</h1>
+                            <h1>asdf</h1>
+                            <h1>asdf</h1>
+                            <h1>asdf</h1>
+                            <h1>asdf</h1>
+                            <h1>asdf</h1>
+                            <h1>asdf</h1>
+                            <h1>asdf</h1>
+                            <h1>asdf</h1>
+                            <h1>asdf</h1>
+                            <h1>asdf</h1>
+                            <h1>asdf</h1>
+                            <h1>asdf</h1>
                             <div class="panel panel-primary">
                                 <div class="panel-heading">
                                     <h3 class="panel-title"><span class="glyphicon glyphicon-user"></span> 供方性质</h3>

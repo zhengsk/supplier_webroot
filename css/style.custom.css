@@ -375,6 +375,9 @@ label.error:empty {
 
 .asterisk {
     color: #D9534F;
+    position: relative;
+    top: 3px;
+    font-weight: bolder;
 }
 
 div.error {
@@ -591,7 +594,7 @@ div.error label.error:before {
 
 
 
-/********** 18. addSupplier_selectSupplierType 选择供方类别 **********/
+/********** 18. supplier_edit_selectType 选择供方类别 **********/
 /*********************************************************************/
 
 .addSupplier-title .panel-heading{
@@ -716,4 +719,38 @@ div.tagsinput span.tag a:hover {
     padding:10px 0 0;
     border-top:1px solid #999;
     box-shadow: 0 0 5px rgba(0,0,0,0.5)
+}
+
+
+
+
+/********** 19. supplier_edit_unbrand 选择供方类别 **********/
+/*********************************************************************/
+
+@media (max-width: 768px) {
+    .supplier-info-nav.affix {
+        position: relative;
+    }
+}
+
+@media (min-width: 768px) {
+    .supplier-info-nav.affix {
+        position: relative;
+    }
+}
+
+@media (min-width: 992px) {
+    .supplier-info-nav.affix {
+        position: fixed;
+        width:220px;
+        top:5px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .supplier-info-nav.affix {
+        position: fixed;
+        width:270px;
+        top:5px;
+    }
 }
