@@ -754,3 +754,25 @@ div.tagsinput span.tag a:hover {
         top:5px;
     }
 }
+
+.panel-btns .panel-edit {
+    text-shadow: 0 1px 1px #333;
+    padding: 0px 12px;
+    opacity: 1;
+    font-size: 20px;
+    margin-top: 0px;
+    margin-left: -15px;
+    position: relative;
+    color: #FFF;
+}
+
+.panel-btns .panel-edit:hover {
+    margin-top: -2px;
+    opacity: 1;
+    text-shadow: 0 2px 2px #333;
+}
+
+.panel-multiple-body .panel-body{
+    border-top: 1px solid #CCC;
+    padding-top: 35px;
+}
