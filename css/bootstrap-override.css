@@ -633,11 +633,12 @@ h4, .h4 {
 .panel-btns a {
    margin-left: 8px;
    float: right;
-   color: #000;
+   color: #FFF;
    display: inline-block;
    font-weight: bold;
-   opacity: 0.4;
-   font-size: 16px;
+   opacity: 0.8;
+   font-size: 24px;
+   text-shadow: 0 1px 1px #000;
    -moz-transition: all 0.2s ease-out 0s;
 	-webkit-transition: all 0.2s ease-out 0s;
 	transition: all 0.2s ease-out 0s;
@@ -649,8 +650,9 @@ h4, .h4 {
 
 .panel-btns a:hover {
    text-decoration: none;
-   opacity: 0.5;
+   opacity: 1;
    cursor: pointer;
+   text-shadow: 0 2px 1px #000;
 }
 
 .panel-btns a.minimize:active,

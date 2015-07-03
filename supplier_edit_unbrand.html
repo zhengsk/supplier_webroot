@@ -10,7 +10,7 @@
         <title>供方详细信息（除品牌类）</title>
 
         <link href="css/style.custom.css" rel="stylesheet">
-
+        
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
             <script src="js/html5shiv.js"></script>
@@ -327,9 +327,9 @@
                                         <!-- <a href="" class="tooltips" data-toggle="tooltip" title="" data-original-title="Settings"> <i class="glyphicon glyphicon-edit"></i> </a> -->
                                         <!-- <a href="" id="addnewtodo" class="tooltips" data-toggle="tooltip" title="" data-original-title="Add New"> <i class="glyphicon glyphicon-plus"></i> </a> -->
 
-                                        <a href="" class="panel-edit tooltips" data-toggle="tooltip" data-original-title="删除"><i class="glyphicon glyphicon-trash"></i></a>
-                                        <a href="" class="panel-edit tooltips" data-toggle="tooltip" data-original-title="编辑"><i class="glyphicon glyphicon-edit"></i></a>
-                                        <a href="" class="panel-edit tooltips" data-toggle="tooltip" data-original-title="新增"><i class="glyphicon glyphicon-plus"></i></a>
+                                        <a data-modal-url="ajax/dialog/supplier_concat.html" class="panel-edit tooltips" data-toggle="tooltip" data-original-title="删除"><i class="glyphicon glyphicon-trash"></i></a>
+                                        <a data-modal-url="ajax/dialog/supplier_concat.html" class="panel-edit tooltips" data-toggle="tooltip" data-original-title="编辑"><i class="glyphicon glyphicon-edit"></i></a>
+                                        <a data-modal-url="ajax/dialog/supplier_concat.html" id="editConcatButton" class="panel-edit tooltips" data-toggle="tooltip" data-original-title="新增"><i class="glyphicon glyphicon-plus"></i></a>
                                     </div>
 
                                     <h3 class="panel-title">
@@ -475,6 +475,14 @@
             
         </section>
 
+
+        <div class="modal fade" id="ajax-dialog-contact" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content"></div>
+            </div>
+        </div>
+
+
         
 
         <script src="js/jquery-1.11.1.min.js"></script>
@@ -482,10 +490,28 @@
         <script src="js/bootstrap.min.js"></script>
         <script src="js/modernizr.min.js"></script>
         <script src="js/jquery.cookies.js"></script>
-        <script src="js/artTemplate/template-debug.js"></script>
+
+        <script src="js/bootstrap-modal-master/bootstrap-modalmanager.js"></script>
+        <script src="js/bootstrap-modal-master/bootstrap-modal.js"></script>
 
         <script src="js/custom.js"></script>
         <script src="js/addSupplier.js"></script>
+
+        <script>
+
+            // 联系方式
+            ;(function(){
+                var $modal = $('#ajax-dialog-contact');
+
+                $('#editConcatButton').click(function(event){
+                    var remoteUrl = $(this).data('modal-url');
+                    $modal.load(remoteUrl, '', function() {
+                        $modal.modal({width: 650});
+                    });
+                });
+            })();
+
+        </script>   
 
     </body>
 </html>
