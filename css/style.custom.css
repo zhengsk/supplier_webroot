@@ -53,8 +53,8 @@
 @import url('animate.min.css');
 @import url('animate.delay.css');
 
-@import url('bootstrap-modal-master/bootstrap-modal-bs3patch.css');
-@import url('bootstrap-modal-master/bootstrap-modal.css');
+@import url('bootstrap-modal/bootstrap-modal-bs3patch.css');
+@import url('bootstrap-modal/bootstrap-modal.css');
 
 
 /********** 2. RESET STYLES **********/
@@ -164,11 +164,6 @@ strong {
 
 .mainpanel {
 
-}
-
-
-form .form-group:last-child {
-    margin-bottom: 0;
 }
 
 .row-pad-5 {
@@ -791,6 +786,25 @@ div.tagsinput span.tag a:hover {
 .panel-multiple-body .panel-body{
     border-top: 1px dashed #AAA;
     padding-top: 30px;
+    padding-left: 50px;
+}
+
+.select-able-row .panel-body:hover,
+.select-able-row .panel-body:hover *{
+    cursor: pointer;
+}
+
+.select-able-row .panel-body{
+    padding-left: 120px;
+}
+
+.select-able-row .panel-body:hover{
+    background: #F5F5F5 url(../images/select-row-hover.png) 50px center no-repeat;
+}
+
+.select-able-row .panel-body.checked{
+    background: #F0F0F0 url(../images/select-row-checked.png) 50px center no-repeat;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
 }
 
 .panel-multiple-body .panel-body:nth-of-type(2){

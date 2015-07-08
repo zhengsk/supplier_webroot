@@ -1,11 +1,11 @@
 ﻿<div class="panel-primary">
     <div class="panel-heading">
         <div class="panel-btns">
-            <a class="panel-close" data-dismiss="modal" aria-hidden="true">&times;</a>
+            <a class="panel-close" data-dismiss="modal">&times;</a>
         </div>
         <h3 class="panel-title">添加联系方式</h3>
     </div>
-    <div class="panel-body">
+    <form class="panel-body" id="contactForm">
         <div class="row form-horizontal">
             <div class="col-sm-6">
                 <div class="form-group">
@@ -15,7 +15,7 @@
                         ：
                     </label>
                     <div class="col-sm-8">
-                        <input type="text" name="name" class="form-control"></div>
+                        <input type="text" name="area" id="area" class="form-control" required></div>
                 </div>
             </div>
             <div class="col-sm-6">
@@ -26,9 +26,11 @@
                         ：
                     </label>
                     <div class="col-sm-8">
-                        <input type="text" name="name" class="form-control"></div>
+                        <input type="text" name="person" id="person" class="form-control" required></div>
                 </div>
             </div>
+        </div>
+        <div class="row form-horizontal">
             <div class="col-sm-6">
                 <div class="form-group">
                     <label class="col-sm-4 control-label">
@@ -37,7 +39,7 @@
                         ：
                     </label>
                     <div class="col-sm-8">
-                        <input type="text" name="name" class="form-control"></div>
+                        <input type="text" name="phone" id="phone" class="form-control" required></div>
                 </div>
             </div>
             <div class="col-sm-6">
@@ -48,13 +50,34 @@
                         ：
                     </label>
                     <div class="col-sm-8">
-                        <input type="text" name="name" class="form-control"></div>
+                        <input type="text" name="Email" id="Email" class="form-control" required></div>
                 </div>
             </div>
         </div>
-    </div>
+    </form>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-        <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span> 提交</button>
+        <button type="button" class="btn btn-primary" id="submit_concat"><span class="glyphicon glyphicon-ok"></span> 提交</button>
     </div>
 </div>
+
+<script type="text/javascript">
+    jQuery("#contactForm").validate({
+        highlight: function(element) {
+            jQuery(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+        },
+        success: function(element) {
+            jQuery(element).closest('.form-group').removeClass('has-error');
+        }
+    });
+
+    // 添加联系方式
+    $('#submit_concat').click(function(){
+        var isValid = jQuery("#contactForm").valid();
+        if(isValid){ 
+            var contactData = FormData.get('contactForm');
+            console.warn(contactData);
+            SupplierUnbrand.supplierDatas.contacts.push(contactData);
+        }
+    });
+</script>

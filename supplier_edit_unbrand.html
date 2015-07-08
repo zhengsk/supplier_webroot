@@ -28,8 +28,6 @@
         <section>
 
             <div class="mainpanel">
-                
-
                 <div class="container">
                     
                     <div class="panel panel-primary mt20 addSupplier-title">
@@ -311,153 +309,20 @@
                                 </div>
                             </div>
 
-                            <div class="panel panel-primary panel-multiple-body">
+                            <div class="panel panel-primary panel-multiple-body select-able-row" id="panelContact">
                                 <div class="panel-heading">
-
-                                    <!-- <div class="pull-right">
-                                        <div class="btn-group mr10">
-                                            <button class="btn btn-sm btn-white tooltips" type="button" data-toggle="tooltip" title="" data-original-title="Archive"><i class="glyphicon glyphicon-plus"></i></button>
-                                            <button class="btn btn-sm btn-white tooltips" type="button" data-toggle="tooltip" title="" data-original-title="Report Spam"><i class="glyphicon glyphicon-edit"></i></button>
-                                            <button class="btn btn-sm btn-white tooltips" type="button" data-toggle="tooltip" title="" data-original-title="Delete"><i class="glyphicon glyphicon-trash"></i></button>
-                                        </div>
-                                    </div> -->
-                                    
                                     <div class="panel-btns">
-                                        <!-- <a href="" class="tooltips" data-toggle="tooltip" title="" data-original-title="Settings"> <i class="glyphicon glyphicon-trash"></i> </a> -->
-                                        <!-- <a href="" class="tooltips" data-toggle="tooltip" title="" data-original-title="Settings"> <i class="glyphicon glyphicon-edit"></i> </a> -->
-                                        <!-- <a href="" id="addnewtodo" class="tooltips" data-toggle="tooltip" title="" data-original-title="Add New"> <i class="glyphicon glyphicon-plus"></i> </a> -->
-
-                                        <a data-modal-url="ajax/dialog/supplier_concat.html" class="panel-edit tooltips" data-toggle="tooltip" data-original-title="删除"><i class="glyphicon glyphicon-trash"></i></a>
+                                        <a data-modal-url="ajax/dialog/supplier_concat.html" id="removeConcatButton" class="panel-edit tooltips" data-toggle="tooltip" data-original-title="删除"><i class="glyphicon glyphicon-trash"></i></a>
                                         <a data-modal-url="ajax/dialog/supplier_concat.html" class="panel-edit tooltips" data-toggle="tooltip" data-original-title="编辑"><i class="glyphicon glyphicon-edit"></i></a>
                                         <a data-modal-url="ajax/dialog/supplier_concat.html" id="editConcatButton" class="panel-edit tooltips" data-toggle="tooltip" data-original-title="新增"><i class="glyphicon glyphicon-plus"></i></a>
                                     </div>
-
                                     <h3 class="panel-title">
                                         <span class="glyphicon glyphicon-saved"></span> 联系方式
                                     </h3>
                                 </div>
-                                <div class="panel-body">
-                                    <div class="row form-horizontal">
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label class="col-sm-4 control-label">
-                                                    地区：
-                                                </label>
-                                                <div class="col-sm-8">
-                                                    <input type="text" name="name" value="厦门" class="form-control form-only-show" disabled>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label class="col-sm-4 control-label">
-                                                    联系人：
-                                                </label>
-                                                <div class="col-sm-8">
-                                                    <input type="text" name="name" value="吴惠惠" class="form-control form-only-show" disabled>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label class="col-sm-4 control-label">
-                                                    电话：
-                                                </label>
-                                                <div class="col-sm-8">
-                                                    <input type="text" name="name" value="0592-7894561" class="form-control form-only-show" disabled>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label class="col-sm-4 control-label">
-                                                    Email：
-                                                </label>
-                                                <div class="col-sm-8">
-                                                    <input type="text" name="name" value="wuhuihui@qq.com" class="form-control form-only-show" disabled>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="panel-body">
-                                    <div class="row form-horizontal">
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label class="col-sm-4 control-label">
-                                                    地区：
-                                                </label>
-                                                <div class="col-sm-8">
-                                                    <input type="text" name="name" value="厦门" class="form-control form-only-show" disabled>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label class="col-sm-4 control-label">
-                                                    联系人：
-                                                </label>
-                                                <div class="col-sm-8">
-                                                    <input type="text" name="name" value="吴惠惠" class="form-control form-only-show" disabled>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label class="col-sm-4 control-label">
-                                                    电话：
-                                                </label>
-                                                <div class="col-sm-8">
-                                                    <input type="text" name="name" value="0592-7894561" class="form-control form-only-show" disabled>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label class="col-sm-4 control-label">
-                                                    Email：
-                                                </label>
-                                                <div class="col-sm-8">
-                                                    <input type="text" name="name" value="wuhuihui@qq.com" class="form-control form-only-show" disabled>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <!-- append panelBody element -->
                             </div>
                             
-                            <h1>asdf</h1>
-                            <h1>asdf</h1>
-                            <h1>asdf</h1>
-                            <h1>asdf</h1>
-                            <h1>asdf</h1>
-                            <h1>asdf</h1>
-                            <h1>asdf</h1>
-                            <h1>asdf</h1>
-                            <h1>asdf</h1>
-                            <h1>asdf</h1>
-                            <h1>asdf</h1>
-                            <h1>asdf</h1>
-                            <h1>asdf</h1>
-                            <h1>asdf</h1>
-                            <h1>asdf</h1>
-                            <h1>asdf</h1>
-                            <h1>asdf</h1>
-                            <h1>asdf</h1>
-                            <h1>asdf</h1>
-                            <h1>asdf</h1>
-                            <h1>asdf</h1>
-                            <h1>asdf</h1>
-                            <h1>asdf</h1>
-                            <h1>asdf</h1>
-                            <h1>asdf</h1>
-                            <h1>asdf</h1>
-                            <h1>asdf</h1>
-                            <h1>asdf</h1>
-                            <h1>asdf</h1>
-                            <h1>asdf</h1>
-                            <h1>asdf</h1>
-                            <h1>asdf</h1>
                     </div>
 
                     <div class="row">
@@ -489,29 +354,17 @@
         <script src="js/jquery-migrate-1.2.1.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/modernizr.min.js"></script>
-        <script src="js/jquery.cookies.js"></script>
 
-        <script src="js/bootstrap-modal-master/bootstrap-modalmanager.js"></script>
-        <script src="js/bootstrap-modal-master/bootstrap-modal.js"></script>
+        <script src="js/jquery-validation/core.js"></script>
+        <script src="js/jquery-validation/localization/messages_zh.js"></script>
+        
 
+        <script src="js/bootstrap-modal/bootstrap-modalmanager.js"></script>
+        <script src="js/bootstrap-modal/bootstrap-modal.js"></script>
+    
         <script src="js/custom.js"></script>
-        <script src="js/addSupplier.js"></script>
+        <script src="js/supplier_edit_unbrand.js"></script>
 
-        <script>
-
-            // 联系方式
-            ;(function(){
-                var $modal = $('#ajax-dialog-contact');
-
-                $('#editConcatButton').click(function(event){
-                    var remoteUrl = $(this).data('modal-url');
-                    $modal.load(remoteUrl, '', function() {
-                        $modal.modal({width: 650});
-                    });
-                });
-            })();
-
-        </script>   
-
+        
     </body>
 </html>
