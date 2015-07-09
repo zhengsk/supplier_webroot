@@ -53,6 +53,8 @@
 @import url('animate.min.css');
 @import url('animate.delay.css');
 
+@import url('PNotify/pnotify.min.css');
+
 @import url('bootstrap-modal/bootstrap-modal-bs3patch.css');
 @import url('bootstrap-modal/bootstrap-modal.css');
 
@@ -730,7 +732,7 @@ div.tagsinput span.tag a:hover {
 
 
 
-/********** 19. supplier_edit_unbrand 选择供方类别 **********/
+/********** 19. supplier_edit_unbrand 供方详细信息 **********/
 /*********************************************************************/
 
 @media (max-width: 768px) {
@@ -795,7 +797,10 @@ div.tagsinput span.tag a:hover {
 }
 
 .select-able-row .panel-body{
-    padding-left: 120px;
+    transition         : padding 400ms;
+    -moz-transition    : padding 400ms; 
+    -webkit-transition : padding 400ms;
+    -o-transition      : padding 400ms;
 }
 
 .select-able-row .panel-body:hover{
@@ -805,10 +810,7 @@ div.tagsinput span.tag a:hover {
 .select-able-row .panel-body.checked{
     background: #F0F0F0 url(../images/select-row-checked.png) 50px center no-repeat;
     box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
-}
-
-.panel-multiple-body .panel-body:nth-of-type(2){
-    border-top: 0;
+    padding-left: 120px;
 }
 
 .form-only-show[disabled]{
@@ -816,4 +818,30 @@ div.tagsinput span.tag a:hover {
     background-color: transparent;
     font-weight: bolder;
     cursor: default;
+}
+
+.select-able-row .panel-body.rowBling{
+    -webkit-animation: rowBling 500ms ease-in-out 0 5 alternate forwards;
+    animation: rowBling 500ms ease-in-out 0 5 alternate forwards;
+}
+
+@-webkit-keyframes rowBling {
+    from { background-color: #FF5; }
+    to { background-color: #F0F0F0; }
+}
+@-moz-keyframes rowBling {
+    from { background-color: #FF5; }
+    to { background-color: #F0F0F0; }
+}
+@keyframes rowBling {
+    from { background-color: #FF5; }
+    to { background-color: #F0F0F0; }
+}
+
+.select-able-row .form-group{
+    margin-bottom: 0;
+}
+
+.select-able-row .panel-body{
+    padding-top: 20px;
 }

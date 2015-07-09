@@ -57,7 +57,7 @@
     </form>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-        <button type="button" class="btn btn-primary" id="submit_concat"><span class="glyphicon glyphicon-ok"></span> 提交</button>
+        <button type="button" class="btn btn-primary" id="submit_concat"><span class="glyphicon glyphicon-ok"></span> 确定</button>
     </div>
 </div>
 
@@ -71,13 +71,22 @@
         }
     });
 
-    // 添加联系方式
-    $('#submit_concat').click(function(){
-        var isValid = jQuery("#contactForm").valid();
-        if(isValid){ 
-            var contactData = FormData.get('contactForm');
-            console.warn(contactData);
-            SupplierUnbrand.supplierDatas.contacts.push(contactData);
-        }
-    });
+    // 绑定新增和修改事件
+    function bindSubmit(action, oldContact){
+        // 添加或修改联系方式
+        $('#submit_concat').click(function(){
+            var isValid = jQuery("#contactForm").valid();
+            if(isValid){
+                $('#ajax-dialog-contact').modal('hide'); // 关闭模态
+
+                var contactData = FormData.get('contactForm');
+                if(action === 'add'){
+                    var contactData = SupplierUnbrand.contacts.add(contactData, true);
+                }else if(action === 'update'){
+                    var contactData = SupplierUnbrand.contacts.update(oldContact, contactData, true);
+                }
+                $(contactData.element).click().removeClass('rowBling').addClass('rowBling');
+            }
+        });
+    }
 </script>

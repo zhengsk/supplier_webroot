@@ -309,18 +309,36 @@
                                 </div>
                             </div>
 
-                            <div class="panel panel-primary panel-multiple-body select-able-row" id="panelContact">
+                            <div class="panel panel-primary panel-multiple-body select-able-row">
                                 <div class="panel-heading">
                                     <div class="panel-btns">
-                                        <a data-modal-url="ajax/dialog/supplier_concat.html" id="removeConcatButton" class="panel-edit tooltips" data-toggle="tooltip" data-original-title="删除"><i class="glyphicon glyphicon-trash"></i></a>
-                                        <a data-modal-url="ajax/dialog/supplier_concat.html" class="panel-edit tooltips" data-toggle="tooltip" data-original-title="编辑"><i class="glyphicon glyphicon-edit"></i></a>
-                                        <a data-modal-url="ajax/dialog/supplier_concat.html" id="editConcatButton" class="panel-edit tooltips" data-toggle="tooltip" data-original-title="新增"><i class="glyphicon glyphicon-plus"></i></a>
+                                        <a id="removeConcatButton" class="panel-edit tooltips" data-toggle="tooltip" data-original-title="删除"><i class="glyphicon glyphicon-trash"></i></a>
+                                        <a id="editConcatButton" data-modal-url="ajax/dialog/supplier_concat.html" class="panel-edit tooltips" data-toggle="tooltip" data-original-title="编辑"><i class="glyphicon glyphicon-edit"></i></a>
+                                        <a id="addConcatButton" data-modal-url="ajax/dialog/supplier_concat.html" class="panel-edit tooltips" data-toggle="tooltip" data-original-title="新增"><i class="glyphicon glyphicon-plus"></i></a>
                                     </div>
                                     <h3 class="panel-title">
                                         <span class="glyphicon glyphicon-saved"></span> 联系方式
                                     </h3>
                                 </div>
-                                <!-- append panelBody element -->
+                                <div id="panelContact">
+                                    <!-- append panelBody element -->
+                                </div>
+                            </div>
+
+                            <div class="panel panel-primary panel-multiple-body select-able-row">
+                                <div class="panel-heading">
+                                    <div class="panel-btns">
+                                        <a id="removeConcatButton" class="panel-edit tooltips" data-toggle="tooltip" data-original-title="删除"><i class="glyphicon glyphicon-trash"></i></a>
+                                        <a id="editConcatButton" data-modal-url="ajax/dialog/supplier_concat.html" class="panel-edit tooltips" data-toggle="tooltip" data-original-title="编辑"><i class="glyphicon glyphicon-edit"></i></a>
+                                        <a id="addConcatButton" data-modal-url="ajax/dialog/supplier_concat.html" class="panel-edit tooltips" data-toggle="tooltip" data-original-title="新增"><i class="glyphicon glyphicon-plus"></i></a>
+                                    </div>
+                                    <h3 class="panel-title">
+                                        <span class="glyphicon glyphicon-saved"></span> 代理品牌
+                                    </h3>
+                                </div>
+                                <div id="panelAgentBrand">
+                                    <!-- append panelBody element -->
+                                </div>
                             </div>
                             
                     </div>
@@ -361,6 +379,8 @@
 
         <script src="js/bootstrap-modal/bootstrap-modalmanager.js"></script>
         <script src="js/bootstrap-modal/bootstrap-modal.js"></script>
+
+        <script src="js/PNotify/pnotify.min.js"></script>
     
         <script src="js/custom.js"></script>
         <script src="js/supplier_edit_unbrand.js"></script>

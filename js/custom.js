@@ -58,11 +58,9 @@ FormData = {
             for(var name in data){
                 var val = data[name];
                 if (!_checkField(name, val)){
-                    if (!_loadBox(name, val)){
-                        form.find('input[name="'+name+'"]').val(val);
-                        form.find('textarea[name="'+name+'"]').val(val);
-                        form.find('select[name="'+name+'"]').val(val);
-                    }
+                    form.find('input[name="'+name+'"]').val(val);
+                    form.find('textarea[name="'+name+'"]').val(val);
+                    form.find('select[name="'+name+'"]').val(val);
                 }
             }
         }
@@ -71,7 +69,7 @@ FormData = {
          * check the checkbox and radio fields
          */
         function _checkField(name, val){
-            var cc = $(target).find('input[name="'+name+'"][type=radio], input[name="'+name+'"][type=checkbox]');
+            var cc = form.find('input[name="'+name+'"][type=radio], input[name="'+name+'"][type=checkbox]');
             if (cc.length){
                 cc.each(function(){
                     _isChecked($(this).val(), val)
@@ -97,4 +95,50 @@ FormData = {
         });
         return result; 
     }
+}
+
+// 操作提示
+var notifyInfo = (function notifyInfo(){
+    var defOpts = {
+        title       : "提示",
+        text        : "没有选择记录！",
+        addclass    : "stack-bar-top",
+        type        : "warn",
+        width       : "300px",
+        cornerclass : "",
+        buttons: {sticker: false },
+        delay       : 2000
+    };
+
+    var notifyObj = false;
+    
+    return function(opts){
+        console.info(notifyObj);
+        if(notifyObj){
+            notifyObj.remove();
+            notifyObj = false;
+        }
+        opts = jQuery.extend({}, defOpts, opts);
+        notifyObj = new PNotify(opts);
+        notifyObj.remove();
+    }
+    
+}());
+
+
+// 模板引擎
+var TemplateEngine = function(html, options) {
+    var re = /{{([^}}]+)?}}/g, reExp = /(^( )?(if|for|else|switch|case|break|{|}))(.*)?/g, code = 'var r=[];\n', cursor = 0, match;
+    var add = function(line, js) {
+        js? (code += line.match(reExp) ? line + '\n' : 'r.push(' + line + ');\n') :
+            (code += line != '' ? 'r.push("' + line.replace(/"/g, '\\"') + '");\n' : '');
+        return add;
+    }
+    while(match = re.exec(html)) {
+        add(html.slice(cursor, match.index))(match[1], true);
+        cursor = match.index + match[0].length;
+    }
+    add(html.substr(cursor, html.length - cursor));
+    code += 'return r.join("");';
+    return new Function(code.replace(/[\r\t\n]/g, '')).apply(options);
 }
