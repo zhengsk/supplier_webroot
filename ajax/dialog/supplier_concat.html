@@ -81,9 +81,9 @@
 
                 var contactData = FormData.get('#modalForm');
                 if(action === 'add'){
-                    var contactData = SupplierUnbrand.contacts.add(contactData, true);
+                    var contactData = SupplierUnbrand.contactsInstance.add(contactData, true);
                 }else if(action === 'update'){
-                    var contactData = SupplierUnbrand.contacts.update(oldContact, contactData, true);
+                    var contactData = SupplierUnbrand.contactsInstance.update(oldContact, contactData, true);
                 }
                 $(contactData.element).click().removeClass('rowBling').addClass('rowBling');
             }

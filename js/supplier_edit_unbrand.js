@@ -33,14 +33,6 @@ jQuery(document).ready(function() {
 			]
 		};
 
-		// 模板名值对模板
-		this.templateString = {
-			tpl_4_5_7 : '<div class = "col-sm-4"> <div class = "form-group"> <label class = "col-sm-5 control-label" >{{label}}：</label> <div class="col-sm-7"> <input type="text" value="{{value}}" class="form-control form-only-show" disabled /> </div> </div> </div>'
-			,tpl_4_6_6 : '<div class = "col-sm-4"> <div class = "form-group"> <label class = "col-sm-6 control-label" >{{label}}：</label> <div class="col-sm-6"> <input type="text" value="{{value}}" class="form-control form-only-show" disabled /> </div> </div> </div>'
-			,tpl_6_4_8 : '<div class = "col-sm-6"> <div class = "form-group"> <label class = "col-sm-4 control-label" >{{label}}：</label> <div class="col-sm-8"> <input type="text" value="{{value}}" class="form-control form-only-show" disabled /> </div> </div> </div>'
-			,tpl_12_2_10 : '<div class = "col-sm-12"> <div class = "form-group"> <label class = "col-sm-2 control-label" >{{label}}：</label> <div class="col-sm-10"> <input type="text" value="{{value}}" class="form-control form-only-show" disabled /> </div> </div> </div>'
-		};
-
 		// 供方详细信息
 		this.labelDatas = {
 			agentBrand : [
@@ -79,6 +71,13 @@ jQuery(document).ready(function() {
 			]
 		};
 
+		// 模板名值对模板
+		this.templateString = {
+			tpl_4_5_7 : '<div class = "col-sm-4"> <div class = "form-group"> <label class = "col-sm-5 control-label" >{{label}}：</label> <div class="col-sm-7"> <input type="text" value="{{value}}" class="form-control form-only-show" disabled /> </div> </div> </div>'
+			,tpl_4_6_6 : '<div class = "col-sm-4"> <div class = "form-group"> <label class = "col-sm-6 control-label" >{{label}}：</label> <div class="col-sm-6"> <input type="text" value="{{value}}" class="form-control form-only-show" disabled /> </div> </div> </div>'
+			,tpl_6_4_8 : '<div class = "col-sm-6"> <div class = "form-group"> <label class = "col-sm-4 control-label" >{{label}}：</label> <div class="col-sm-8"> <input type="text" value="{{value}}" class="form-control form-only-show" disabled /> </div> </div> </div>'
+			,tpl_12_2_10 : '<div class = "col-sm-12"> <div class = "form-group"> <label class = "col-sm-2 control-label" >{{label}}：</label> <div class="col-sm-10"> <input type="text" value="{{value}}" class="form-control form-only-show" disabled /> </div> </div> </div>'
+		};
 
 		// 创建一个名值元素
 		this._createLabelElement = function(labelItem, value){
@@ -123,181 +122,94 @@ jQuery(document).ready(function() {
 			(callBack || jQuery.noop).call(this); //回调
 		};
 		
-		// 代理品牌处理
-		this.agentBrand = {
 
-			supplier : this,
+		this.createEdit = function(type){
 
-			panelId : '#panelAgentBrand', // 代理品牌panelId
+			return this[type + "Instance"] = {
 
-			// 创建联系方式数据
-			show : function(){
-				var supplier = this.supplier;
-				supplier._panelShowDatas(
-					supplier.labelDatas.agentBrand, 
-					supplier.supplierDatas.agentBrand, 
-					this.panelId,
-					function(){
-						console.info('Added and show agentBrand!');
-					}
-				);
-				return this;
-			},
+				supplier : this,
 
-			// 添加数据
-			add : function(data, isAppend){
-				var supplier = this.supplier;
-				supplier.supplierDatas.agentBrand.push(data);
-				isAppend && this._addElement(data); // 添加元素
-				return data;
-			},
-
-				// 添加元素
-				_addElement : function(data){
+				// 创建联系方式数据
+				show : function(panelId){
 					var supplier = this.supplier;
-					var panelBody = supplier._createRowElement(
-						supplier.labelDatas.agentBrand, 
-						data
+					supplier._panelShowDatas(
+						supplier.labelDatas[type], 
+						supplier.supplierDatas[type], 
+						panelId,
+						function(){
+							console.info('Added and show Rows!');
+						}
 					);
-					supplier._appendRowElement("#panelContact", panelBody);
+					return this;
+				},
+
+				// 添加联系方式数据
+				add : function(data, isAppend){
+					var supplier = this.supplier;
+					supplier.supplierDatas[type].push(data);
+					isAppend && this._addElement(data); // 添加元素
 					return data;
 				},
 
-
-			// 删除数据
-			remove : function(data, isRemove){
-				var self = this;
-				var agentBrandDatas = this.supplier.supplierDatas;
-				jQuery.each(agentBrandDatas.agentBrand, function(i,item){
-					if(item === data){
-						agentBrandDatas.agentBrand.splice(i,1);
-						isRemove && self._removeElement(data);
-						data.element = null;
+					// 添加元素
+					_addElement : function(data){
+						var supplier = this.supplier;
+						var panelBody = supplier._createRowElement(
+							supplier.labelDatas[type], 
+							data
+						);
+						supplier._appendRowElement("#panelContact", panelBody);
 						return data;
-					}
-				});
-				return false;
-			},
+					},
 
-				// 删除元素
-				_removeElement : function(data){
-					$(data.element).fadeTo(400,0).slideUp(400,function(){
-						$(this).remove();
+
+				// 删除联系方式数据
+				remove : function(data, isRemove){
+					var self = this;
+					var itemDatas = this.supplier.supplierDatas;
+					jQuery.each(itemDatas[type], function(i,item){
+						if(item === data){
+							itemDatas[type].splice(i,1);
+							isRemove && self._removeElement(data);
+							data.element = null;
+							return data;
+						}
 					});
+					return false;
 				},
 
+					// 删除元素
+					_removeElement : function(data){
+						$(data.element).fadeTo(400,0).slideUp(400,function(){
+							$(this).remove();
+						});
+					},
 
-			// 更新数据
-			update : function(oldData, newData, isUpdate){
-				jQuery.extend(oldData, newData);
-				isUpdate && this._updateElement(oldData);
-				return oldData;
-			},
 
-				// 更新元素
-				_updateElement : function(newData){
-					var oldElement = newData.element;
-					var supplier = this.supplier;
-					var newElement = supplier._createRowElement(
-						supplier.labelDatas.agentBrand, 
-						newData
-					);
-					$(oldElement).replaceWith(newElement);
-					return newElement;
-				}
-		}
+				// 更新联系方式数据
+				update : function(oldData, newData, isUpdate){
+					jQuery.extend(oldData, newData);
+					isUpdate && this._updateElement(oldData);
+					return oldData;
+				},
 
-		// 联系方式处理
-		this.contacts = {
-
-			supplier : this,
-
-			panelId : '#panelContact', // 联系方式panelId
-
-			// 创建联系方式数据
-			show : function(){
-				var supplier = this.supplier;
-				supplier._panelShowDatas(
-					supplier.labelDatas.contacts, 
-					supplier.supplierDatas.contacts, 
-					this.panelId,
-					function(){
-						console.info('Added and show contact!');
+					// 更新元素
+					_updateElement : function(newData){
+						var oldElement = newData.element;
+						var supplier = this.supplier;
+						var newElement = supplier._createRowElement(
+							supplier.labelDatas[type], 
+							newData
+						);
+						$(oldElement).replaceWith(newElement);
+						return newElement;
 					}
-				);
-				return this;
-			},
-
-			// 添加联系方式数据
-			add : function(data, isAppend){
-				var supplier = this.supplier;
-				supplier.supplierDatas.contacts.push(data);
-				isAppend && this._addElement(data); // 添加元素
-				return data;
-			},
-
-				// 添加元素
-				_addElement : function(data){
-					var supplier = this.supplier;
-					var panelBody = supplier._createRowElement(
-						supplier.labelDatas.contacts, 
-						data
-					);
-					supplier._appendRowElement("#panelContact", panelBody);
-					return data;
-				},
-
-
-			// 删除联系方式数据
-			remove : function(data, isRemove){
-				var self = this;
-				var contactsDatas = this.supplier.supplierDatas;
-				jQuery.each(contactsDatas.contacts, function(i,item){
-					if(item === data){
-						contactsDatas.contacts.splice(i,1);
-						isRemove && self._removeElement(data);
-						data.element = null;
-						return data;
-					}
-				});
-				return false;
-			},
-
-				// 删除元素
-				_removeElement : function(data){
-					$(data.element).fadeTo(400,0).slideUp(400,function(){
-						$(this).remove();
-					});
-				},
-
-
-			// 更新联系方式数据
-			update : function(oldData, newData, isUpdate){
-				jQuery.extend(oldData, newData);
-				isUpdate && this._updateElement(oldData);
-				return oldData;
-			},
-
-				// 更新元素
-				_updateElement : function(newData){
-					var oldElement = newData.element;
-					var supplier = this.supplier;
-					var newElement = supplier._createRowElement(
-						supplier.labelDatas.contacts, 
-						newData
-					);
-					$(oldElement).replaceWith(newElement);
-					return newElement;
-				}
+			}
 		}
 
 		// 初始化
 		this.init = function(param){
-
-			this.agentBrand.show(); // 创建代理品牌
-
-			this.contacts.show(); // 创建联系方式
-
+			
 		}
 		 
 	})();
@@ -306,84 +218,129 @@ jQuery(document).ready(function() {
 	/* ===================================== */
 
 	SupplierUnbrand.init({
-		supplierTypeDataUrl : "_temp/supplierTypeData.json"
+
+	});
+
+
+	// 联系方式
+	var contactInstance = SupplierUnbrand.createEdit('contacts');
+	contactInstance.show('#panelContact'); // 创建联系方式
+	new BindEdit({
+		dataObj :  contactInstance
+		,rowPanelId : '#panelContact'
+		,operateElement :  {
+			 add    : '#addConcatButton'
+			,edit   : '#editConcatButton'
+			,remove : '#removeConcatButton'
+		}
+	});
+
+
+
+	// 代理品牌
+	var agentBrandInstance = SupplierUnbrand.createEdit('agentBrand');
+	agentBrandInstance.show('#panelAgentBrand'); // 创建代理品牌
+	new BindEdit({
+		dataObj :  agentBrandInstance
+		,rowPanelId : '#panelAgentBrand'
+		,modalWidth : 400
+		,operateElement :  {
+			 add    : '#addAgentBrandButton'
+			,edit   : '#editAgentBrandButton'
+			,remove : '#removeAgentBrandButton'
+		}
 	});
 
 	
 
+	// 绑定编辑功能
+	function BindEdit(opts){
 
+		this.opts = {
+			 modalId : '#ajax-modal-dialog'
+			,modalWidth : 650
+			// ,dataObj :  SupplierUnbrand.contacts
+			// ,rowPanelId : '#panelContact'
+			// ,operateElement :  {
+			// 	 add    : '#addConcatButton'
+			// 	,edit   : '#editConcatButton'
+			// 	,remove : '#removeConcatButton'
+			// }
+		}
+		$.extend(this.opts, opts);
 
-	// 联系方式
-	;(function(){
+		var self = this;
+		var operateElement = this.opts.operateElement;
 
-	    var $modal = $('#ajax-modal-dialog');
-	    var contactObj = SupplierUnbrand.contacts;
-	    var currentContact = undefined; // 当前选中的联系方式
+		this.$modal = $(this.opts.modalId);
+		this.currentItem = undefined; // 当前选中的项
+		
 
-	    // 点击新增按钮
-	    $('#addConcatButton').click(function(event){
-	        var remoteUrl = $(this).data('modal-url');
-	        $modal.load(remoteUrl, '', function() {
-	            $modal.modal({width: 650});
-	            bindSubmit('add'); // 绑定提交为新增方法
-	        });
+		// 点击修改按钮
+	    $(operateElement.add).click(function(){
+	    	self.addItem($(this).data('modal-url'));
 	    });
 
 	    // 点击修改按钮
-	    $('#editConcatButton').click(function(){
-	    	if(currentContact){
-	    		var remoteUrl = $(this).data('modal-url');
-		        $modal.load(remoteUrl, '', function() {
-		            $modal.modal({width: 650});
-		            FormData.load('#modalForm', currentContact);
-		            bindSubmit('update', currentContact); // 绑定提交为修改方法
-		        });
-	    	}else{
-    		    notifyInfo({text:'请选择要修改的联系方式！'})
-	    	}
+	    $(operateElement.edit).click(function(){
+	    	self.eidtItem($(this).data('modal-url'));
 	    });
 
 	    // 点击删除按钮
-	    $('#removeConcatButton').click(function(){
-	    	if(currentContact){
-	    		contactObj.remove(currentContact, true);
-	    		currentContact = undefined;
-	    	}else{
-    		    notifyInfo({text:'请选择要删除的联系方式！'})
-	    	}
-	    });
-
-
-	    // 选择代理平牌
-	    $('#panelAgentBrand').on('click','.panel-body',function(){
-	    	if($(this).hasClass('checked')){
-	    		$(this).removeClass('checked');
-	    		currentAgentBrand = undefined;
-	    	}else{
-	    		$(this).addClass('checked').siblings('.panel-body').removeClass('checked');
-	    		currentAgentBrand = $(this).data('rowDatas');
-	    	}
-	    });
-
-	    // 选择联系方式
-	    $('#panelContact').on('click','.panel-body',function(){
-	    	if($(this).hasClass('checked')){
-	    		$(this).removeClass('checked');
-	    		currentContact = undefined;
-	    	}else{
-	    		$(this).addClass('checked').siblings('.panel-body').removeClass('checked');
-	    		currentContact = $(this).data('rowDatas');
-	    	}
-	    });
-
-
-
-	    // 移除rowBling类，保证下次动画显示
-	    $('select-able-row').on('webkitAnimationEnd msAnimationEnd animationend','.panel-body',function(){
-	    	$(this).removeClass('rowBling');
+	    $(operateElement.remove).click(function(){
+	    	self.removeItem();
 	    });
 	    
-	})();
+	    // 选择数据
+	    $(this.opts.rowPanelId).on('click','.panel-body',function(){
+	    	if($(this).hasClass('checked')){
+	    		$(this).removeClass('checked');
+	    		self.currentItem = undefined;
+	    	}else{
+	    		$(this).addClass('checked').siblings('.panel-body').removeClass('checked');
+	    		self.currentItem = $(this).data('rowDatas');
+	    	}
+	    });
+	}
+
+	// 新增
+	BindEdit.prototype.addItem = function(modalUrl){
+		var self = this;
+		this.$modal.load(modalUrl, '', function() {
+		    self.$modal.modal({width: self.opts.modalWidth});
+		    bindSubmit('add'); // 绑定提交为新增方法
+		});
+	}
+
+	// 修改
+	BindEdit.prototype.eidtItem = function(modalUrl){
+		var self = this;
+		if(this.currentItem){
+	        this.$modal.load(modalUrl, '', function() {
+	            self.$modal.modal({width: self.opts.modalWidth});
+	            FormData.load('#modalForm', self.currentItem);
+	            bindSubmit('update', self.currentItem); // 绑定提交为修改方法
+	        });
+    	}else{
+		    notifyInfo({text:'请选择要修改的项目！'})
+    	}
+	}
+
+	// 删除
+	BindEdit.prototype.removeItem = function(){
+		if(this.currentItem){
+    		this.opts.dataObj.remove(this.currentItem, true);
+    		this.currentItem = undefined;
+    	}else{
+		    notifyInfo({text:'请选择要删除的项目！'})
+    	}
+	}
+
+
+	// 移除rowBling类，保证下次动画显示
+	$('select-able-row').on('webkitAnimationEnd msAnimationEnd animationend','.panel-body',function(){
+		$(this).removeClass('rowBling');
+	});
 
 
 });

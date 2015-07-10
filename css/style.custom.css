@@ -770,11 +770,11 @@ div.tagsinput span.tag a:hover {
 
 .panel-btns .panel-edit {
     text-shadow: 0 1px 1px #333;
-    padding: 0px 12px;
+    padding: 0px 8px;
     opacity: 1;
     font-size: 20px;
     margin-top: 0px;
-    margin-left: -15px;
+    margin-left: 5px;
     position: relative;
     color: #FFF;
 }
