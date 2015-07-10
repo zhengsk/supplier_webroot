@@ -308,7 +308,25 @@
                                     </div>
                                 </div>
                             </div>
-
+                            
+                            <!-- =S 代理品牌 -->
+                            <div class="panel panel-primary panel-multiple-body select-able-row">
+                                <div class="panel-heading">
+                                    <div class="panel-btns">
+                                        <a id="removeAgentBrand" class="panel-edit tooltips" data-toggle="tooltip" data-original-title="删除"><i class="glyphicon glyphicon-trash"></i></a>
+                                        <a id="editAgentBrand" data-modal-url="ajax/dialog/supplier_concat.html" class="panel-edit tooltips" data-toggle="tooltip" data-original-title="编辑"><i class="glyphicon glyphicon-edit"></i></a>
+                                        <a id="addAgentBrand" data-modal-url="ajax/dialog/supplier_concat.html" class="panel-edit tooltips" data-toggle="tooltip" data-original-title="新增"><i class="glyphicon glyphicon-plus"></i></a>
+                                    </div>
+                                    <h3 class="panel-title">
+                                        <span class="glyphicon glyphicon-saved"></span> 代理品牌
+                                    </h3>
+                                </div>
+                                <div id="panelAgentBrand">
+                                    <!-- append panelBody element -->
+                                </div>
+                            </div>
+                            
+                            <!-- =S 联系方式 -->
                             <div class="panel panel-primary panel-multiple-body select-able-row">
                                 <div class="panel-heading">
                                     <div class="panel-btns">
@@ -325,21 +343,7 @@
                                 </div>
                             </div>
 
-                            <div class="panel panel-primary panel-multiple-body select-able-row">
-                                <div class="panel-heading">
-                                    <div class="panel-btns">
-                                        <a id="removeConcatButton" class="panel-edit tooltips" data-toggle="tooltip" data-original-title="删除"><i class="glyphicon glyphicon-trash"></i></a>
-                                        <a id="editConcatButton" data-modal-url="ajax/dialog/supplier_concat.html" class="panel-edit tooltips" data-toggle="tooltip" data-original-title="编辑"><i class="glyphicon glyphicon-edit"></i></a>
-                                        <a id="addConcatButton" data-modal-url="ajax/dialog/supplier_concat.html" class="panel-edit tooltips" data-toggle="tooltip" data-original-title="新增"><i class="glyphicon glyphicon-plus"></i></a>
-                                    </div>
-                                    <h3 class="panel-title">
-                                        <span class="glyphicon glyphicon-saved"></span> 代理品牌
-                                    </h3>
-                                </div>
-                                <div id="panelAgentBrand">
-                                    <!-- append panelBody element -->
-                                </div>
-                            </div>
+                            
                             
                     </div>
 
@@ -359,7 +363,7 @@
         </section>
 
 
-        <div class="modal fade" id="ajax-dialog-contact" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal fade" id="ajax-modal-dialog" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content"></div>
             </div>

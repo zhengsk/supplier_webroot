@@ -51,7 +51,7 @@ function doAjax (options, callBack) {
  */
 FormData = {
     load : function load(formId, data){ // 参考easyui form部分
-        var form = $('#'+formId);
+        var form = $(formId);
         _load(data);
         
         function _load(data){
@@ -87,7 +87,7 @@ FormData = {
         }
     },
     get : function(formId, fields){
-        var form = $('#'+formId);
+        var form = $(formId);
         var fields = fields || form.find('input','textarea','select');
         var result = {};
         jQuery.each(fields, function(i, ele){
@@ -130,7 +130,7 @@ var notifyInfo = (function notifyInfo(){
 var TemplateEngine = function(html, options) {
     var re = /{{([^}}]+)?}}/g, reExp = /(^( )?(if|for|else|switch|case|break|{|}))(.*)?/g, code = 'var r=[];\n', cursor = 0, match;
     var add = function(line, js) {
-        js? (code += line.match(reExp) ? line + '\n' : 'r.push(' + line + ');\n') :
+        js? (code += line.match(reExp) ? line + '\n' : 'r.push(this.' + line + ');\n') :
             (code += line != '' ? 'r.push("' + line.replace(/"/g, '\\"') + '");\n' : '');
         return add;
     }

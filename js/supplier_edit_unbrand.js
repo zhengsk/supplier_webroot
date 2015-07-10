@@ -7,60 +7,82 @@ jQuery(document).ready(function() {
 
 		// 供方详细信息
 		this.supplierDatas = {
-			contacts : [{
-				area : '厦门',
-				person : '吴慧慧',
-				phone : '0592-1234567',
-				Email : 'wuhuihui@qq.com'
-			},{
-				area : '福州',
-				person : '吴是慧慧',
-				phone : '05952-1234567',
-				Email : 'wuhu订单ihui@qq.com'
-			}]
+			contacts : [
+				{
+					area : '厦门',
+					person : '吴慧慧',
+					phone : '0592-1234567',
+					Email : 'wuhuihui@qq.com'
+				},{
+					area : '福州',
+					person : '吴是慧慧',
+					phone : '05952-1234567',
+					Email : 'wuhu订单ihui@qq.com'
+				}
+			]
+			,agentBrand : [
+				{
+					name : '上海三菱',
+					grade : '一级',
+					area : '福建'
+				},{
+					name : '三洋电器',
+					grade : '二级',
+					area : '上海'
+				}
+			]
 		};
 
 		// 模板名值对模板
-		this.supplierDatas = {
-			tpl_6_48 : '<div class = "col-sm-6"> <div class = "form-group"> <label class = "col-sm-4 control-label" >{{label}}：</label> <div class="col-sm-8"> <input type="text" value="{{value}}" class="form-control form-only-show" disabled /> </div> </div> </div>',
-			tpl_12_48 : '<div class = "col-sm-6"> <div class = "form-group"> <label class = "col-sm-2 control-label" >{{label}}：</label> <div class="col-sm-10"> <input type="text" value="{{value}}" class="form-control form-only-show" disabled /> </div> </div> </div>',
+		this.templateString = {
+			tpl_4_5_7 : '<div class = "col-sm-4"> <div class = "form-group"> <label class = "col-sm-5 control-label" >{{label}}：</label> <div class="col-sm-7"> <input type="text" value="{{value}}" class="form-control form-only-show" disabled /> </div> </div> </div>'
+			,tpl_4_6_6 : '<div class = "col-sm-4"> <div class = "form-group"> <label class = "col-sm-6 control-label" >{{label}}：</label> <div class="col-sm-6"> <input type="text" value="{{value}}" class="form-control form-only-show" disabled /> </div> </div> </div>'
+			,tpl_6_4_8 : '<div class = "col-sm-6"> <div class = "form-group"> <label class = "col-sm-4 control-label" >{{label}}：</label> <div class="col-sm-8"> <input type="text" value="{{value}}" class="form-control form-only-show" disabled /> </div> </div> </div>'
+			,tpl_12_2_10 : '<div class = "col-sm-12"> <div class = "form-group"> <label class = "col-sm-2 control-label" >{{label}}：</label> <div class="col-sm-10"> <input type="text" value="{{value}}" class="form-control form-only-show" disabled /> </div> </div> </div>'
 		};
 
 		// 供方详细信息
 		this.labelDatas = {
-			contacts : [{
-				label : '地区',
-				field : 'area',
-				tpl	: 
-			},{
-				label : '联系人',
-				field : 'person'
-			},{
-				label : '电话',
-				field : 'phone'
-			},{
-				label : 'Email',
-				field : 'Email'
-			}]
+			agentBrand : [
+				{
+					label : '品牌名称',
+					field : 'name',
+					tpl : 'tpl_4_5_7'
+				},{
+					label : '代理等级',
+					field : 'grade',
+					tpl : 'tpl_4_5_7'
+				},{
+					label : '经营区域',
+					field : 'area',
+					tpl : 'tpl_4_5_7'
+				}
+			]
+			,contacts : [
+				{
+					label : '地区',
+					field : 'area',
+					tpl	: 'tpl_6_4_8'
+				},{
+					label : '联系人',
+					field : 'person',
+					tpl	: 'tpl_6_4_8'
+				},{
+					label : '电话',
+					field : 'phone',
+					tpl	: 'tpl_6_4_8'
+				},{
+					label : 'Email',
+					field : 'Email',
+					tpl	: 'tpl_6_4_8'
+				}
+			]
 		};
 
 
 		// 创建一个名值元素
-		this._createLabelElement = function(label, value){
-
-			return '<div class = "col-sm-6"> <div class = "form-group"> <label class = "col-sm-4 control-label" >'+ label +'：</label> <div class="col-sm-8"> <input type="text" value="'+ value +'" class="form-control form-only-show" disabled /> </div> </div> </div>'
-			/*=========
-				<div class="col-sm-6">
-				    <div class="form-group">
-				        <label class="col-sm-4 control-label">
-				            地区：
-				        </label>
-				        <div class="col-sm-8">
-				            <input type="text" name="name" value="厦门" class="form-control form-only-show" disabled>
-				        </div>
-				    </div>
-				</div>
-			=========*/
+		this._createLabelElement = function(labelItem, value){
+			return TemplateEngine(this.templateString[labelItem.tpl], {label: labelItem.label, value: value});
 		}
 
 		// 创建一行记录
@@ -68,8 +90,8 @@ jQuery(document).ready(function() {
 			var self = this;
 			var element, result = [];
 			for(var i = 0, j = labels.length; i < j; i++){
-				var label = labels[i];
-				element = self._createLabelElement(label.label, data[label.field]);
+				var labelItem = labels[i];
+				element = self._createLabelElement(labelItem, data[labelItem.field]);
 				result.push(element);
 			}
 
@@ -101,7 +123,89 @@ jQuery(document).ready(function() {
 			(callBack || jQuery.noop).call(this); //回调
 		};
 		
+		// 代理品牌处理
+		this.agentBrand = {
 
+			supplier : this,
+
+			panelId : '#panelAgentBrand', // 代理品牌panelId
+
+			// 创建联系方式数据
+			show : function(){
+				var supplier = this.supplier;
+				supplier._panelShowDatas(
+					supplier.labelDatas.agentBrand, 
+					supplier.supplierDatas.agentBrand, 
+					this.panelId,
+					function(){
+						console.info('Added and show agentBrand!');
+					}
+				);
+				return this;
+			},
+
+			// 添加数据
+			add : function(data, isAppend){
+				var supplier = this.supplier;
+				supplier.supplierDatas.agentBrand.push(data);
+				isAppend && this._addElement(data); // 添加元素
+				return data;
+			},
+
+				// 添加元素
+				_addElement : function(data){
+					var supplier = this.supplier;
+					var panelBody = supplier._createRowElement(
+						supplier.labelDatas.agentBrand, 
+						data
+					);
+					supplier._appendRowElement("#panelContact", panelBody);
+					return data;
+				},
+
+
+			// 删除数据
+			remove : function(data, isRemove){
+				var self = this;
+				var agentBrandDatas = this.supplier.supplierDatas;
+				jQuery.each(agentBrandDatas.agentBrand, function(i,item){
+					if(item === data){
+						agentBrandDatas.agentBrand.splice(i,1);
+						isRemove && self._removeElement(data);
+						data.element = null;
+						return data;
+					}
+				});
+				return false;
+			},
+
+				// 删除元素
+				_removeElement : function(data){
+					$(data.element).fadeTo(400,0).slideUp(400,function(){
+						$(this).remove();
+					});
+				},
+
+
+			// 更新数据
+			update : function(oldData, newData, isUpdate){
+				jQuery.extend(oldData, newData);
+				isUpdate && this._updateElement(oldData);
+				return oldData;
+			},
+
+				// 更新元素
+				_updateElement : function(newData){
+					var oldElement = newData.element;
+					var supplier = this.supplier;
+					var newElement = supplier._createRowElement(
+						supplier.labelDatas.agentBrand, 
+						newData
+					);
+					$(oldElement).replaceWith(newElement);
+					return newElement;
+				}
+		}
 
 		// 联系方式处理
 		this.contacts = {
@@ -190,8 +294,9 @@ jQuery(document).ready(function() {
 		// 初始化
 		this.init = function(param){
 
+			this.agentBrand.show(); // 创建代理品牌
+
 			this.contacts.show(); // 创建联系方式
-			
 
 		}
 		 
@@ -210,7 +315,8 @@ jQuery(document).ready(function() {
 
 	// 联系方式
 	;(function(){
-	    var $modal = $('#ajax-dialog-contact');
+
+	    var $modal = $('#ajax-modal-dialog');
 	    var contactObj = SupplierUnbrand.contacts;
 	    var currentContact = undefined; // 当前选中的联系方式
 
@@ -229,7 +335,7 @@ jQuery(document).ready(function() {
 	    		var remoteUrl = $(this).data('modal-url');
 		        $modal.load(remoteUrl, '', function() {
 		            $modal.modal({width: 650});
-		            FormData.load('contactForm', currentContact);
+		            FormData.load('#modalForm', currentContact);
 		            bindSubmit('update', currentContact); // 绑定提交为修改方法
 		        });
 	    	}else{
@@ -248,6 +354,17 @@ jQuery(document).ready(function() {
 	    });
 
 
+	    // 选择代理平牌
+	    $('#panelAgentBrand').on('click','.panel-body',function(){
+	    	if($(this).hasClass('checked')){
+	    		$(this).removeClass('checked');
+	    		currentAgentBrand = undefined;
+	    	}else{
+	    		$(this).addClass('checked').siblings('.panel-body').removeClass('checked');
+	    		currentAgentBrand = $(this).data('rowDatas');
+	    	}
+	    });
+
 	    // 选择联系方式
 	    $('#panelContact').on('click','.panel-body',function(){
 	    	if($(this).hasClass('checked')){
@@ -259,8 +376,10 @@ jQuery(document).ready(function() {
 	    	}
 	    });
 
-	    // 删除rowBling
-	    $('#panelContact').on('webkitAnimationEnd msAnimationEnd animationend','.panel-body',function(){
+
+
+	    // 移除rowBling类，保证下次动画显示
+	    $('select-able-row').on('webkitAnimationEnd msAnimationEnd animationend','.panel-body',function(){
 	    	$(this).removeClass('rowBling');
 	    });
 	    
